@@ -1,0 +1,12 @@
+.nav-brand {
+  user-select: none;
+}
+.link {
+  text-decoration: none;
+  color: white;
+  margin-left: 20px;
+  border: none;
+}
+.selected {
+  border-bottom: 2px solid blue;
+}

@@ -1,0 +1,40 @@
+.user-list-container {
+  padding: 0px;
+  list-style-type: none;
+  width: 100%;
+}
+.user-container {
+  display: flex;
+  padding: 3px 10px 3px 10px;
+}
+.id-span {
+  width: 40px;
+}
+.btn-delete {
+  background-color: transparent;
+  border: none;
+  margin-left: auto;
+}
+.md-delete {
+  color: red;
+}
+.md-delete:active {
+  color: green;
+}
+.delete-all-btn {
+  background-image: linear-gradient(orange, yellow);
+  align-self: flex-end;
+  border: none;
+  border-radius: 4px;
+  padding: 5px 0px 5px 0px;
+  font-weight: 600;
+  width: 140px;
+}
+.delete-all-btn:active {
+  background-image: radial-gradient(orange, yellow);
+  color: le;
+}
+.delete-all-btn:disabled {
+  background-image: none;
+  background-color: lightgray;
+}
