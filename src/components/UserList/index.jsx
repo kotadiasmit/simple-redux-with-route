@@ -4,7 +4,7 @@ import { MdDeleteForever } from "react-icons/md";
 import { clearAllUsers, deleteUser } from "../store/reducer";
 
 const UserList = () => {
-  const userNameArray = useSelector((state) => state.users);
+  const userNameArray = useSelector((state) => state.users.array);
   console.log(userNameArray);
 
   const dispatch = useDispatch();
@@ -14,7 +14,6 @@ const UserList = () => {
   };
 
   const deleteUserById = (id) => {
-    console.log(456);
     dispatch(deleteUser(id));
   };
 

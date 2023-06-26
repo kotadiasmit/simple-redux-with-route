@@ -1,6 +1,9 @@
 import { Component } from "react";
 import "./index.scss";
 import { Navigate } from "react-router-dom";
+import { VscEye, VscEyeClosed } from "react-icons/vsc";
+import { addUser, isLoginSuccess } from "../store/reducer";
+import { connect } from "react-redux";
 
 class Login extends Component {
   state = {
@@ -31,7 +34,7 @@ class Login extends Component {
   submitForm = async (event) => {
     event.preventDefault();
     const { username, password } = this.state;
-    const userDetails = { username: "Smit", password: "123456789" };
+    const userDetails = { username: "Smit", password: "12345" };
 
     if (
       userDetails.username === username &&
@@ -42,10 +45,8 @@ class Login extends Component {
         errorMsg: "",
         loginSuccess: true,
       });
-      console.log(this.props);
-      const { setSuccessValue } = this.props;
-
-      setSuccessValue();
+      //to use dispatch in class component
+      this.props.isLoginSuccess(true);
     } else {
       this.onSubmitFailure("invalid access");
     }
@@ -84,32 +85,32 @@ class Login extends Component {
           <label className="label" htmlFor="password">
             Location
           </label>
-          <input
-            className="input"
-            type={showPassword ? "text" : "password"}
-            placeholder="password"
-            value={password}
-            onChange={this.onChangePassword}
-            id="password"
-          ></input>
+          <div className="pass-input-container">
+            <input
+              className="password-input"
+              type={showPassword ? "text" : "password"}
+              placeholder="password"
+              value={password}
+              onChange={this.onChangePassword}
+              id="password"
+            ></input>
+            {showPassword ? (
+              <VscEye className="show-password" onClick={this.onShowPassword} />
+            ) : (
+              <VscEyeClosed
+                className="show-password"
+                onClick={this.onShowPassword}
+              />
+            )}
+          </div>
           {showSubmitError && (
             <p className="error-msg">
               <sup>*</sup>
               {errorMsg}
             </p>
           )}
-          <div>
-            <input
-              type="checkBox"
-              id="show-password"
-              value="Show Password"
-              onChange={this.onShowPassword}
-            />
-            <label htmlFor="show-password" className="mb-3">
-              Show Password
-            </label>
-          </div>
-          <button type="submit" className="btn btn-primary ">
+
+          <button type="submit" className="btn btn-primary mt-3">
             Login
           </button>
         </form>
@@ -118,4 +119,10 @@ class Login extends Component {
   }
 }
 
-export default Login;
+// to use dispatch in class component
+const mapDispatchToProps = {
+  isLoginSuccess: isLoginSuccess,
+  addUser: addUser,
+};
+
+export default connect(null, mapDispatchToProps)(Login);

@@ -2,21 +2,24 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const userSlice = createSlice({
   name: "user",
-  initialState: [],
+  initialState: { array: [], loginSuccess: false },
   reducers: {
     addUser(state, action) {
       console.log(action);
-      state.push(action.payload);
+      state.array.push(action.payload);
     },
     deleteUser(state, action) {
-      state.splice(action.payload, 1);
+      state.array.splice(action.payload, 1);
     },
-    clearAllUsers() {
-      console.log(123);
-      return [];
+    clearAllUsers(state) {
+      state.array = [];
+    },
+    isLoginSuccess(state, action) {
+      console.log(action);
+      state.loginSuccess = action.payload;
     },
   },
 });
-console.log(userSlice);
-export const { addUser, deleteUser, clearAllUsers } = userSlice.actions;
+export const { addUser, deleteUser, clearAllUsers, isLoginSuccess } =
+  userSlice.actions;
 export default userSlice.reducer;

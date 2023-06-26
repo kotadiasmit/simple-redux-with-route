@@ -26,11 +26,26 @@
   width: 60%;
   font-size: 16px;
   border: 1px solid gray;
-  padding: 2px 3px 2px 5px;
+  padding: 0px 3px 2px 5px;
   border-radius: 3px;
   margin-top: 5px;
   margin-bottom: 15px;
   background-color: #ececec;
+  outline: none;
+}
+.pass-input-container {
+  background-color: #ececec;
+  border: 1px solid gray;
+  border-radius: 3px;
+}
+.password-input {
+  border: none;
+  background-color: #ececec;
+  padding: 0px 0px 2px 4px;
+  outline: none;
+}
+.show-password {
+  padding-right: 3px;
 }
 .error-msg {
   align-self: flex-start;

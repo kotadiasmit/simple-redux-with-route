@@ -4,11 +4,12 @@ import NavbarComp from "../Navbar";
 import { fakeUser } from "../RandomUser";
 import { addUser } from "../store/reducer";
 import UserList from "../UserList";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
 
-const MyPage = (props) => {
-  const { isSuccess } = props;
+const MyPage = () => {
+  const isSuccess = useSelector((state) => state.users.loginSuccess);
+
   const dispatch = useDispatch();
 
   const addNewUser = () => {
